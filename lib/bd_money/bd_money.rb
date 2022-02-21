@@ -46,7 +46,8 @@ class Money
     else
       str = self.class.clean value
       raise MoneyError, "Invalid value [#{str}] (#{value.class.name})" unless self.class.valid?(str)
-      @amount = BigDecimal.new str.gsub REMOVE_RE, ''
+      text_formated = str.gsub REMOVE_RE, ''
+      @amount = BigDecimal(text_formated)
     end
   end
 
